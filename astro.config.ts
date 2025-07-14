@@ -10,20 +10,21 @@ import node from '@astrojs/node';
 import { spectreDark } from './src/ec-theme';
 
 const {
-  GISCUS_REPO,
-  GISCUS_REPO_ID,
-  GISCUS_CATEGORY,
-  GISCUS_CATEGORY_ID,
-  GISCUS_MAPPING,
-  GISCUS_STRICT,
-  GISCUS_REACTIONS_ENABLED,
-  GISCUS_EMIT_METADATA,
-  GISCUS_LANG
+  PUBLIC_GISCUS_REPO,
+  PUBLIC_GISCUS_REPO_ID,
+  PUBLIC_GISCUS_CATEGORY,
+  PUBLIC_GISCUS_CATEGORY_ID,
+  PUBLIC_GISCUS_MAPPING,
+  PUBLIC_GISCUS_REACTIONS,
+  PUBLIC_GISCUS_EMIT_METADATA,
+  PUBLIC_GISCUS_INPUT_POSITION,
+  PUBLIC_GISCUS_THEME,
+  PUBLIC_GISCUS_LANG
 } = loadEnv(process.env.NODE_ENV!, process.cwd(), "");
 
 // https://astro.build/config
 const config = defineConfig({
-  site: 'https://spectre.louisescher.dev',
+  site: 'https://stack-junkie.com',
   output: 'static',
   integrations: [
     expressiveCode({
@@ -32,31 +33,22 @@ const config = defineConfig({
     mdx(),
     sitemap(),
     spectre({
-      name: 'Spectre',
+      name: 'Stack-Junkie',
+      twitterHandle: '@Stack_Junkie',
       openGraph: {
         home: {
-          title: 'Spectre',
-          description: 'A minimalistic theme for Astro.'
+          title: 'Stack-Junkie',
+          description: 'Web development tutorials, tips, and tools for developers.'
         },
         blog: {
           title: 'Blog',
-          description: 'News and guides for Spectre.'
+          description: 'Latest tutorials and insights from Stack Junkie.'
         },
         projects: {
           title: 'Projects'
         }
       },
-      giscus: {
-        repository: GISCUS_REPO,
-        repositoryId: GISCUS_REPO_ID,
-        category: GISCUS_CATEGORY,
-        categoryId: GISCUS_CATEGORY_ID,
-        mapping: GISCUS_MAPPING as any,
-        strict: GISCUS_STRICT === "true",
-        reactionsEnabled: GISCUS_REACTIONS_ENABLED === "true",
-        emitMetadata: GISCUS_EMIT_METADATA === "true",
-        lang: GISCUS_LANG,
-      }
+      
     })
   ],
   adapter: node({

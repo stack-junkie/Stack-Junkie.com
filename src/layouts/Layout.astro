@@ -60,6 +60,46 @@ const { title, description, image, pagefindIgnore, article } = Astro.props;
 		<meta name="twitter:title" content={title} />
 		{description && <meta name="twitter:description" content={description} />}
 		<meta name="twitter:image" content={image?.src || '/img/og.png'} />
+
+		{/* JSON-LD Structured Data */}
+		<script type="application/ld+json">
+		{
+			JSON.stringify({
+				"@context": "https://schema.org",
+				"@type": article ? "Article" : "WebSite",
+				"name": title,
+				"description": description,
+				"url": Astro.url.href,
+				"image": image?.src || '/img/og.png',
+				...(article && {
+					"headline": title,
+					"datePublished": article.createdAt.toISOString(),
+					"dateModified": article.updatedAt?.toISOString() || article.createdAt.toISOString(),
+					"author": {
+						"@type": "Person",
+						"name": name,
+						"url": "https://stack-junkie.com"
+					},
+					"publisher": {
+						"@type": "Organization",
+						"name": "Stack-Junkie",
+						"url": "https://stack-junkie.com"
+					}
+				}),
+				...(!article && {
+					"@type": "WebSite",
+					"name": "Stack-Junkie",
+					"url": "https://stack-junkie.com",
+					"description": "Web development tutorials, tips, and tools for developers.",
+					"author": {
+						"@type": "Person",
+						"name": "Christopher Kvamme",
+						"alternateName": "Stack-Junkie"
+					}
+				})
+			})
+		}
+		</script>
 	</head>
 	<body>
 		<main data-pagefind-ignore={pagefindIgnore}>
