@@ -51,7 +51,7 @@ const config = defineConfig({
     })
   ],
   adapter: vercel({
-    runtime: 'nodejs20.x'
+    functionPerRoute: false
   })
 });
 
