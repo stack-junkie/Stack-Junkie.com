@@ -37,7 +37,7 @@ const config = defineConfig({
       openGraph: {
         home: {
           title: 'Stack-Junkie',
-          description: 'Web development tutorials, tips, and tools for developers.'
+          description: 'Electronics tech turned AI-assisted developer documenting the journey to make my first dollar from coding. Follow my $1.00 Challenge using modern AI tools.'
         },
         blog: {
           title: 'Blog',
