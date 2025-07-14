@@ -4,6 +4,7 @@ import { defineConfig } from 'astro/config';
 import expressiveCode from 'astro-expressive-code';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
+import vercel from '@astrojs/vercel/serverless';
 import spectre from './package/src';
 
 import { spectreDark } from './src/ec-theme';
@@ -24,7 +25,6 @@ const {
 // https://astro.build/config
 const config = defineConfig({
   site: 'https://stack-junkie.com',
-  output: 'static',
   integrations: [
     expressiveCode({
       themes: [spectreDark],
@@ -49,7 +49,8 @@ const config = defineConfig({
       },
       
     })
-  ]
+  ],
+  adapter: vercel()
 });
 
 export default config;
