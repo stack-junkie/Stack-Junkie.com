@@ -10,7 +10,7 @@
     "url": "https://github.com/stack-junkie/Stack-Junkie.com.git"
   },
   "homepage": "https://stack-junkie.com",
-  "packageManager": "pnpm@9.15.0",
+  "packageManager": "pnpm@10.4.0",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",

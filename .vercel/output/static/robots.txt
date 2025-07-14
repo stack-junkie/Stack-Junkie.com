@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://stack-junkie.com/sitemap-index.xml
+
+# Disallow search page indexing
+Disallow: /pagefind/
+
+# Allow all other pages
+Allow: /blog/
+Allow: /projects/
