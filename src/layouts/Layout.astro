@@ -1,11 +1,13 @@
 ---
-import '../styles/reset.css';
-import '../styles/globals.css';
+import "../styles/reset.css";
+import "../styles/globals.css";
+import "../styles/effects-library.css";
 
-import Background from '../components/Background.astro';
-import Navbar from '../components/Navbar.astro';
-import LayoutGrid from '../components/LayoutGrid.astro';
-import { name, themeColor, twitterHandle } from 'spectre:globals';
+import { name, themeColor, twitterHandle } from "spectre:globals";
+import type { ImageMetadata } from "astro:assets";
+import LayoutGrid from "../components/LayoutGrid.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
 
 interface Props {
 	title: string;
@@ -102,14 +104,18 @@ const { title, description, image, pagefindIgnore, article } = Astro.props;
 		</script>
 	</head>
 	<body>
+		<Navbar />
+		<slot name="hero" />
 		<main data-pagefind-ignore={pagefindIgnore}>
-			<Navbar />
 			<LayoutGrid>
 				<slot name="left" slot="left" />
 				<slot name="right" slot="right" />
 			</LayoutGrid>
 			<slot name="404" />
 		</main>
-		<Background />
+		<slot name="full-width" />
+		<slot />
+		<Footer />
+		<!-- <Background /> -->
 	</body>
 </html>

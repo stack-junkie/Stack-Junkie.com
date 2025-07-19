@@ -98,3 +98,70 @@ temp/
 # Template files (for development use only)
 **/template-*.mdx
 templates/
+
+# Build outputs
+.vercel/
+
+# Test coverage
+coverage/
+
+# Vitest
+*.coverage
+
+# Biome
+biome.json.bak
+
+# Claude-specific files  
+.claude
+settings.local.json
+workspace-scripts/
+
+# Temporary backlog files
+Backlog/
+
+# Personal development mess (save random shit here)
+scratch/
+sandbox/
+testing/
+random/
+temp-files/
+notes/
+experiments/
+drafts/
+dev-notes/
+todo/
+Lab-*/
+WIP-*/
+
+# Personal files you might dump in root
+*.txt
+*.md.bak
+*.old
+*.backup
+*.tmp
+*-backup.*
+*-old.*
+*-temp.*
+ideas.md
+notes.md
+random-thoughts.md
+personal-notes.md
+
+# Screenshot dumps
+screenshot*.png
+screen-*.jpg
+capture-*.gif
+
+# Downloaded resources you might forget about
+downloads/
+resources/
+assets-temp/
+
+# AI conversation logs (if you save them)
+claude-*.md
+chatgpt-*.txt
+conversation-*.md
+
+# Package manager lockfiles for experiments
+package-lock.json.bak
+yarn.lock.bak

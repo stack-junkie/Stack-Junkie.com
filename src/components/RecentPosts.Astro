@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('posts'))
+  .filter(p => p.data.draft !== true)
+  .sort((a, b) => b.data.createdAt.getTime() - a.data.createdAt.getTime())
+  .slice(0, 5); // Get the 5 most recent posts
+---
+
+<div class="effect-code-window">
+  <div class="effect-code-window-header">
+    <div class="effect-code-window-controls">
+      <span class="effect-code-window-control close"></span>
+      <span class="effect-code-window-control minimize"></span>
+      <span class="effect-code-window-control maximize"></span>
+    </div>
+    <div class="effect-code-window-title">recent-posts.md</div>
+  </div>
+  <div class="effect-code-window-content">
+    <div class="effect-code-window-line-numbers">
+      {posts.map((_, i) => <span>{i + 1}</span>)}
+    </div>
+    <div class="effect-code-window-code">
+      {posts.map(post => (
+        <div class="effect-code-window-line">
+          <a href={`/blog/${post.id}`}>
+            <span class="effect-code-comment">// {post.data.createdAt.toLocaleDateString()}</span>
+            <br />
+            <span class="effect-code-string">"{post.data.title}"</span>
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Code window styles moved to effects-library.css */
+  /* Use classes: effect-code-window, effect-code-window-header, effect-code-window-controls, etc. */
+</style>

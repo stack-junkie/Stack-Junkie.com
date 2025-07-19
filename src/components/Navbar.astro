@@ -1,28 +1,42 @@
 ---
 import Icon from "./Icon.astro";
-import { name } from 'spectre:globals';
+import { Image } from 'astro:assets';
+import stackJunkieLogo from '../content/assets/Logo.png';
+// import { name } from 'spectre:globals';
 
 const path = Astro.url.pathname;
 ---
-<nav>
-  <a class="site-title" href="/">{name}</a>
+<nav class="effect-navbar-glass"> 
+  <a class="effect-navbar-logo" href="/">
+    <Image 
+      src={stackJunkieLogo} 
+      alt="Stack-Junkie" 
+      class="effect-navbar-logo-image"
+      width={50}
+      height={50}
+      loading="eager"
+      format="webp"
+    />
+    <span class="effect-navbar-logo-text">Stack Junkie .com</span>
+    <div class="effect-particle-container"></div>
+  </a>
   <ul>
     <li>
-      <a href="/blog" class:list={{ active: path.startsWith('/blog') }}>Blog</a>
+      <a href="/blog" class:list={["effect-navbar-link", { active: path.startsWith('/blog') }]}>Blog</a>
     </li>
     <li class="nav-separator">/</li>
     <li>
-      <a href="/projects" class:list={{ active: path.startsWith('/projects') }}>Projects</a>
+      <a href="/projects" class:list={["effect-navbar-link", { active: path.startsWith('/projects') }]}>Projects</a>
     </li>
     <li class="nav-separator">/</li>
     <li>
-      <input id="search" type="text" placeholder="Search (Ctrl+K)" />
+      <input id="search" type="text" placeholder="Search (Ctrl+K)" class="effect-navbar-search" />
       <div id="search-results"></div>
     </li>
   </ul>
   <button class="mobile-nav-toggle">
-    <Icon type="lucide" name="menu" width={24} height={24} class="menu-closed" />
-    <Icon type="lucide" name="x" width={24} height={24} class="menu-open" />
+    <Icon type="lucide" name="menu" width={24} height={24} class:list="menu-closed" />
+    <Icon type="lucide" name="x" width={24} height={24} class:list="menu-open" />
   </button>
 </nav>
 <script is:inline>
@@ -155,21 +169,105 @@ const path = Astro.url.pathname;
 
   document.addEventListener('DOMContentLoaded', handleTabletChange);
   document.addEventListener('resize', handleTabletChange);
+
+  // SCROLL-BASED HEADER BACKGROUND TRANSITION
+  function handleHeaderScroll() {
+    const nav = document.querySelector('nav');
+    const hero = document.querySelector('.hero');
+    
+    if (!nav || !hero) return;
+    
+    // Calculate 50% of hero section height
+    const heroHeight = hero.offsetHeight;
+    const scrollThreshold = heroHeight * 0.5;
+    const scrollY = window.scrollY;
+    
+    // Toggle 'effect-navbar-scrolled' class based on scroll position
+    if (scrollY > scrollThreshold) {
+      nav.classList.add('effect-navbar-scrolled');
+    } else {
+      nav.classList.remove('effect-navbar-scrolled');
+    }
+  }
+
+  // Add scroll event listener
+  window.addEventListener('scroll', handleHeaderScroll);
+  
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', handleHeaderScroll);
+  
+  // LOGO PARTICLE BURST EFFECT
+  function createParticleBurst() {
+    const particlesContainer = document.querySelector('.effect-particle-container');
+    if (!particlesContainer) return;
+    
+    // Clear existing particles
+    particlesContainer.innerHTML = '';
+    
+    // Create 12 particles
+    for (let i = 0; i < 12; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'effect-particle';
+      
+      // Random direction and distance
+      const angle = (i / 12) * Math.PI * 2;
+      const distance = 20 + Math.random() * 30;
+      const randomX = Math.cos(angle) * distance + 'px';
+      const randomY = Math.sin(angle) * distance + 'px';
+      
+      particle.style.setProperty('--random-x', randomX);
+      particle.style.setProperty('--random-y', randomY);
+      particle.style.left = '50%';
+      particle.style.top = '50%';
+      particle.style.transform = 'translate(-50%, -50%)';
+      
+      // Random delay and duration
+      const delay = Math.random() * 100;
+      const duration = 600 + Math.random() * 200;
+      
+      particle.style.animation = `particleBurst ${duration}ms ease-out ${delay}ms forwards`;
+      
+      particlesContainer.appendChild(particle);
+      
+      // Remove particle after animation
+      setTimeout(() => {
+        if (particle.parentNode) {
+          particle.parentNode.removeChild(particle);
+        }
+      }, duration + delay + 100);
+    }
+  }
+  
+  // Add hover event listeners for logo
+  const siteTitleElement = document.querySelector('.effect-navbar-logo');
+  if (siteTitleElement) {
+    siteTitleElement.addEventListener('mouseenter', createParticleBurst);
+  }
 </script>
 <style>
+  /* Component-specific navbar layout styles */
   nav {
+    /* POSITIONING: Sticky header that follows scroll */
+    position: sticky;
+    top: 0;
+    width: 100%;
+    
+    /* LAYOUT: Flexbox for space-between alignment */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: 'Geist Mono', monospace;
+    
+    /* TYPOGRAPHY: Bold condensed font to match logo */
+    font-family: 'Impact', 'Bebas Neue', 'Oswald', 'Fjalla One', 'Geist', sans-serif;
+    
+    /* LAYERING: High z-index to stay above content */
     z-index: 50;
-  }
-
-  .site-title {
-    font-weight: 800;
-    text-decoration: none;
-    font-size: 1.25em;
-    z-index: 2;
+    
+    /* SPACING: Internal padding */
+    padding: 0.5rem 2rem;
+    
+    /* COLOR: White text */
+    color: white;
   }
 
   nav ul {
@@ -183,33 +281,6 @@ const path = Astro.url.pathname;
 
   nav ul li {
     position: relative;
-  }
-
-  nav a {
-    color: inherit;
-    text-decoration: none;
-    padding: .25rem .5rem;
-  }
-
-  nav a:hover, nav a:focus-visible, nav a.active {
-    background-color: var(--primary);
-    outline: none;
-  }
-
-  #search {
-    background: none;
-    border: none;
-    outline: none;
-    padding: .25rem .5rem;
-    width: 160px;
-  }
-
-  #search::placeholder {
-    color: white;
-  }
-
-  #search:focus {
-    background-color: var(--primary);
   }
 
   #search-results {
@@ -293,6 +364,11 @@ const path = Astro.url.pathname;
       pointer-events: all;
       background-color: #181818;
     }
+    
+    .effect-navbar-logo {
+      font-size: 1.2em;
+      padding: 0.4rem 0.8rem;
+    }
 
     nav ul li {
       position: relative;
@@ -302,7 +378,7 @@ const path = Astro.url.pathname;
       width: 100%;
       max-width: none;
       padding: 0;
-      font-size: 1.125em;
+      font-size: 16px;
     }
   
     nav ul li a {
@@ -320,7 +396,7 @@ const path = Astro.url.pathname;
       top: 0;
     }
 
-    #search {
+    .effect-navbar-search {
       width: 100%;
       max-width: none;
       padding: .75rem 1rem;
@@ -329,7 +405,7 @@ const path = Astro.url.pathname;
     #search-results {
       width: 100%;
       top: 100%;
-      font-size: 0.875em;
+      font-size: 16px;
     }
   }
 </style>
@@ -339,11 +415,16 @@ const path = Astro.url.pathname;
     text-decoration: none;
     color: white !important;
     padding: .5rem;
+    font-size: 16px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
   }
 
   #search-results a:hover, #search-results a:focus-visible {
     background-color: var(--primary);
     outline: none;
+    transform: translateY(-1px);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   }
 
   #search-results a:hover mark, #search-results a:focus-visible mark {

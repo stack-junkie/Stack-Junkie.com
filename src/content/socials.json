@@ -1,29 +1,29 @@
 [
-  {
-    "id": 1,
-    "icon": {
-      "type": "lucide",
-      "name": "github"
-    },
-    "text": "GitHub",
-    "link": "https://github.com/stack-junkie"
-  },
-  {
-    "id": 2,
-    "icon": {
-      "type": "simple-icons",
-      "name": "reddit"
-    },
-    "text": "Reddit",
-    "link": "https://www.reddit.com/user/Stack-Junkie/"
-  },
-  {
-    "id": 3,
-    "icon": {
-      "type": "lucide",
-      "name": "twitter"
-    },
-    "text": "Twitter",
-    "link": "https://x.com/Stack_Junkie"
-  }
+	{
+		"id": 1,
+		"icon": {
+			"type": "lucide",
+			"name": "github"
+		},
+		"text": "GitHub",
+		"link": "https://github.com/stack-junkie"
+	},
+	{
+		"id": 2,
+		"icon": {
+			"type": "simple-icons",
+			"name": "reddit"
+		},
+		"text": "Reddit",
+		"link": "https://www.reddit.com/user/Stack-Junkie/"
+	},
+	{
+		"id": 3,
+		"icon": {
+			"type": "lucide",
+			"name": "twitter"
+		},
+		"text": "Twitter",
+		"link": "https://x.com/Stack_Junkie"
+	}
 ]

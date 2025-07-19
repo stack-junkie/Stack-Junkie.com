@@ -1,19 +1,19 @@
 [
-  {
-    "id": 1,
-    "icon": {
-      "type": "lucide",
-      "name": "calendar"
-    },
-    "text": "Dev Blog Started 2025"
-  },
-  {
-    "id": 2,
-    "icon": {
-      "type": "lucide",
-      "name": "cpu"
-    },
-    "type": "lucide",
-    "text": "Electronics Tech → Software Tinkerer."
-  }
+	{
+		"id": 1,
+		"icon": {
+			"type": "lucide",
+			"name": "calendar"
+		},
+		"text": "Dev Blog Started 2025"
+	},
+	{
+		"id": 2,
+		"icon": {
+			"type": "lucide",
+			"name": "cpu"
+		},
+		"type": "lucide",
+		"text": "Electronics Tech → Software Tinkerer."
+	}
 ]

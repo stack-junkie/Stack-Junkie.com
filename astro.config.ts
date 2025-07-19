@@ -1,58 +1,73 @@
-import { loadEnv } from "vite";
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 
-import expressiveCode from 'astro-expressive-code';
-import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
-import vercel from '@astrojs/vercel/serverless';
-import spectre from './package/src';
+import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
+import vercel from "@astrojs/vercel";
+import expressiveCode from "astro-expressive-code";
+import spectre from "./package/src";
+import { spectreDark } from "./src/ec-theme";
 
-import { spectreDark } from './src/ec-theme';
 
-const {
-  PUBLIC_GISCUS_REPO,
-  PUBLIC_GISCUS_REPO_ID,
-  PUBLIC_GISCUS_CATEGORY,
-  PUBLIC_GISCUS_CATEGORY_ID,
-  PUBLIC_GISCUS_MAPPING,
-  PUBLIC_GISCUS_REACTIONS,
-  PUBLIC_GISCUS_EMIT_METADATA,
-  PUBLIC_GISCUS_INPUT_POSITION,
-  PUBLIC_GISCUS_THEME,
-  PUBLIC_GISCUS_LANG
-} = loadEnv(process.env.NODE_ENV!, process.cwd(), "");
-
-// https://astro.build/config
-const config = defineConfig({
-  site: 'https://stack-junkie.com',
+export default defineConfig({
+  site: "https://stack-junkie.com",
+  server: {
+    host: true,
+    port: 4321,
+    watch: {
+      usePolling: true,
+      interval: 100
+    },
+    hmr: {
+      overlay: true
+    }
+  },
   integrations: [
     expressiveCode({
-      themes: [spectreDark],
+      themes: [spectreDark]
     }),
     mdx(),
     sitemap(),
     spectre({
-      name: 'Stack-Junkie',
-      twitterHandle: '@Stack_Junkie',
+      name: "Stack-Junkie",
+      themeColor: "#14b8a6",
+      twitterHandle: "@Stack_Junkie",
       openGraph: {
         home: {
-          title: 'Stack-Junkie',
-          description: 'Electronics tech turned AI-assisted developer documenting the journey to make my first dollar from coding. Follow my $1.00 Challenge using modern AI tools.'
+          title: "Stack-Junkie",
+          description: "Electronics tech turned AI-assisted developer documenting the journey to make my first dollar from coding. Follow my $1.00 Challenge using modern AI tools."
         },
         blog: {
-          title: 'Blog',
-          description: 'Latest tutorials and insights from Stack Junkie.'
+          title: "Blog",
+          description: "Latest tutorials and insights from Stack Junkie."
         },
-        projects: {
-          title: 'Projects'
-        }
+        projects: { title: "Projects" }
       },
-      
+      giscus: false
     })
   ],
-  adapter: vercel({
-    functionPerRoute: false
-  })
+  adapter: vercel(),
+  vite: {
+    assetsInclude: [
+      "**/*.png",
+      "**/*.jpg",
+      "**/*.jpeg",
+      "**/*.gif",
+      "**/*.svg",
+      "**/*.webp"
+    ],
+    css: {
+      devSourcemap: true
+    },
+    server: {
+      watch: {
+        usePolling: true,
+        interval: 100
+      },
+      hmr: {
+        overlay: true,
+        host: "localhost",
+        clientPort: 4321
+      }
+    }
+  }
 });
-
-export default config;

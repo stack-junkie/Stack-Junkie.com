@@ -1,6 +1,6 @@
 ---
-import { Image } from 'astro:assets';
-import type { LocalImageProps, RemoteImageProps } from 'astro:assets';
+import { Image } from "astro:assets";
+import type { LocalImageProps, RemoteImageProps } from "astro:assets";
 
 type Props = LocalImageProps | RemoteImageProps;
 
@@ -16,26 +16,56 @@ const height = props.height;
     width={width ? ((typeof width === 'number' ? width : Number.parseInt(width)) / 4) : undefined} 
     height={height ? ((typeof height === 'number' ? height : Number.parseInt(height)) / 4) : undefined}
     {...props}
-    class='glow'
-    class:list={[props.class]}
+    class:list={['glow', props.class]}
     quality={75}
   />
 </div>
 <style>
+  /* ================================
+     IMAGE GLOW COMPONENT STYLING
+     ================================
+     
+     Creates a subtle glow effect behind images by:
+     - Duplicating the image at 25% size
+     - Positioning it behind the main image
+     - Applying a blur filter for glow effect
+     
+     ADJUSTABLE VALUES:
+     - filter: blur(8px): Controls glow spread
+       * 4px = subtle, tight glow
+       * 12px = more diffuse, dramatic glow
+       * 16px = very soft, wide glow
+     
+     - width/height (/4): Controls glow image size
+       * /2 = larger glow image (more intense)
+       * /6 = smaller glow image (more subtle)
+       * /8 = very subtle glow
+     
+     - quality={75}: Controls glow image quality
+       * 50 = faster loading, less quality
+       * 90 = higher quality, slower loading
+  */
+  
   .glow-image {
+    /* CONTAINER: Relative positioning for absolute glow */
     position: relative;
   }
 
   .glow-image img {
+    /* MAIN IMAGE: Positioned above glow layer */
     position: relative;
     z-index: 1;
   }
 
   .glow {
+    /* GLOW LAYER: Positioned behind main image */
     position: absolute !important;
     top: 0;
     left: 0;
     z-index: 0 !important;
+    
+    /* BLUR EFFECT: Creates the glow appearance */
+    /* ADJUST: Change 8px to modify glow intensity */
     filter: blur(8px);
   }
 </style>

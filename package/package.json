@@ -1,0 +1,22 @@
+{
+  "name": "@stack-junkie/spectre",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./spectre-integration.d.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "spectre-integration.d.ts"
+  ],
+  "dependencies": {
+    "astro": "^4.4.0",
+    "vite": "^5.0.0"
+  },
+  "peerDependencies": {
+    "astro": "^4.4.0"
+  }
+}

@@ -1,0 +1,382 @@
+``---
+// HeroSection.astro
+
+export interface Props {
+	title?: string;
+	subtitle?: string;
+	description?: string;
+	primaryCtaText?: string;
+	primaryCtaLink?: string;
+	secondaryCtaText?: string;
+	secondaryCtaLink?: string;
+}
+
+const {
+	title = "Beginning of Build in Public",
+	subtitle = "Professional electronics background, software-inclined",
+	description = "Follow my path from employee to entrepreneur, using AI tools to build things I wish existed already ",
+	primaryCtaText = "Start Reading",
+	primaryCtaLink = "/blog",
+	secondaryCtaText = "View Projects",
+	secondaryCtaLink = "/projects"
+} = Astro.props;
+---
+
+<section class="hero">
+	<div class="particles" id="particles"></div>
+	<div class="container">
+		<div class="grid">
+			
+			<div class="hero-visual">
+				<div class="code-window">
+					<div class="window-header">
+						<div class="window-controls">
+							<span class="control close"></span>
+							<span class="control minimize"></span>
+							<span class="control maximize"></span>
+						</div>
+						<div class="window-title">journey.js</div>
+					</div>
+					<div class="window-content">
+						<div class="line-numbers">
+							<span>1</span>
+							<span>2</span>
+							<span>3</span>
+							<span>4</span>
+							<span>5</span>
+							<span>6</span>
+							<span>7</span>
+						</div>
+						<div class="code">
+							<div class="code-line">
+								<span class="comment">// The $1.00 Challenge</span>
+							</div>
+							<div class="code-line">
+								<span class="keyword">const</span> <span class="variable">journey</span> <span class="operator">=</span> <span class="punctuation">{</span>
+							</div>
+							<div class="code-line">
+								&nbsp;&nbsp;<span class="property">from</span><span class="punctuation">:</span> <span class="string">"electronics tech"</span><span class="punctuation">,</span>
+							</div>
+							<div class="code-line">
+								&nbsp;&nbsp;<span class="property">to</span><span class="punctuation">:</span> <span class="string">"AI-assisted developer"</span><span class="punctuation">,</span>
+							</div>
+							<div class="code-line">
+								&nbsp;&nbsp;<span class="property">goal</span><span class="punctuation">:</span> <span class="string">"first $1.00 earned"</span><span class="punctuation">,</span>
+							</div>
+							<div class="code-line">
+								&nbsp;&nbsp;<span class="property">tools</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">"Astro"</span><span class="punctuation">,</span> <span class="string">"Claude"</span><span class="punctuation">,</span> <span class="string">"AI"</span><span class="punctuation">]</span>
+							</div>
+							<div class="code-line">
+								<span class="punctuation">}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	/* HERO SECTION: Full viewport height minus navbar */
+	.hero {
+		position: relative;
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+		background: var(--color-bg);
+	}
+
+	/* NOISE OVERLAY: 5% opacity texture layer */
+	.hero::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		/* ADJUST: Change opacity to control noise intensity */
+		background-image: 
+			radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0);
+		background-size: 20px 20px;
+		opacity: 0.05;
+		pointer-events: none;
+		z-index: 1;
+	}
+
+	/* PARTICLES CONTAINER: Floating dots layer */
+	.hero::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		pointer-events: none;
+		z-index: 2;
+	}
+
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 2rem;
+		position: relative;
+		/* ADJUST: Z-index to ensure content sits above background layers */
+		z-index: 10;
+	}
+
+	/* PARTICLES: Floating white dots */
+	.particles {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		z-index: 3;
+	}
+
+	.particle {
+		position: absolute;
+		width: 2px;
+		height: 2px;
+		background: rgba(255, 255, 255, 0.6);
+		border-radius: 50%;
+		/* ADJUST: Animation duration to control drift speed */
+		animation: drift 20s infinite linear;
+	}
+
+	@keyframes drift {
+		0% {
+			transform: translateY(100vh) translateX(0);
+			opacity: 0;
+		}
+		10% {
+			opacity: 1;
+		}
+		90% {
+			opacity: 1;
+		}
+		100% {
+			transform: translateY(-100px) translateX(50px);
+			opacity: 0;
+		}
+	}
+
+	/* GRID LAYOUT: Single centered column for code window */
+	.grid {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	/* CODE WINDOW: Bigger size, dark theme, 3D perspective */
+	.hero-visual {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		/* ADJUST: 3D perspective strength */
+		perspective: 1000px;
+	}
+
+	.code-window {
+		/* ADJUST: Dark theme background */
+		background: #0d1117;
+		/* ADJUST: Corner rounding */
+		border-radius: 12px;
+		overflow: hidden;
+		width: 100%;
+		/* ADJUST: Maximum width - made a bit bigger */
+		max-width: 650px;
+		/* ADJUST: Shadow depth and color */
+		box-shadow: 
+			0 25px 50px rgba(0, 0, 0, 0.5),
+			0 0 0 1px rgba(255, 255, 255, 0.05);	
+		/* ADJUST: 3D rotation angles */
+		transform: rotateY(-8deg) rotateX(2deg);
+		transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+		/* ADJUST: Z-index to ensure code window sits above background layers */
+		position: relative;
+		z-index: 11;
+	}
+
+	.code-window:hover {
+		/* ADJUST: Hover 3D rotation */
+		transform: rotateY(-4deg) rotateX(1deg);
+	}
+
+	.window-header {
+		background: #161b22;
+		padding: 0.75rem 1rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-bottom: 1px solid #30363d;
+	}
+
+	.window-controls {
+		display: flex;
+		gap: 0.5rem;
+	}
+
+	.control {
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		display: block;
+	}
+
+	.control.close { background: #ff5f56; }
+	.control.minimize { background: #ffbd2e; }
+	.control.maximize { background: #27ca3f; }
+
+	.window-title {
+		font-family: 'JetBrains Mono', monospace;
+		font-size: 0.8rem;
+		color: #8b949e;
+		font-weight: 500;
+	}
+
+	.window-content {
+		display: flex;
+		background: #0d1117;
+	}
+
+	.line-numbers {
+		background: #161b22;
+		padding: 1.5rem 0.75rem;
+		font-family: 'JetBrains Mono', monospace;
+		font-size: 0.8rem;
+		color: #484f58;
+		line-height: 1.6;
+		user-select: none;
+		border-right: 1px solid #30363d;
+		text-align: right;
+		min-width: 3rem;
+	}
+
+	.code {
+		padding: 1.5rem 1rem;
+		font-family: 'JetBrains Mono', monospace;
+		font-size: 0.85rem;
+		line-height: 1.6;
+		flex: 1;
+		overflow-x: auto;
+	}
+
+	.code-line {
+		color: #e6edf3;
+		white-space: nowrap;
+	}
+
+	/* Modern syntax highlighting */
+	.comment { color: #8b949e; font-style: italic; }
+	.keyword { color: #ff7b72; font-weight: 600; }
+	.variable { color: #79c0ff; }
+	.operator { color: #ff7b72; }
+	.property { color: #7ee787; }
+	.string { color: #a5d6ff; }
+	.punctuation { color: #f85149; }
+
+	/* RESPONSIVE: Mobile breakpoint - single column, smaller text, reduced padding */
+	@media (max-width: 1024px) {
+		.hero {
+			/* ADJUST: Reduced padding for tablet/mobile */
+			padding: 6rem 0 8rem;
+		}
+		
+
+		.code-window {
+			/* ADJUST: Remove 3D effect on mobile */
+			transform: none;
+		}
+
+		.code-window:hover {
+			transform: none;
+		}
+	}
+
+	/* MOBILE PHONE: Even smaller text and reduced padding */
+	@media (max-width: 768px) {
+		.hero {
+			/* ADJUST: Further reduced padding for mobile */
+			padding: 4rem 0 6rem;
+			min-height: auto;
+		}
+
+		.container {
+			/* ADJUST: Side padding for mobile */
+			padding: 0 1rem;
+		}
+
+
+		.code-window {
+			/* ADJUST: Full width code window on mobile */
+			max-width: 100%;
+		}
+
+		.window-content {
+			/* ADJUST: Smaller code text on mobile */
+			font-size: 0.75rem;
+		}
+
+		.code {
+			/* ADJUST: Reduced padding in code area */
+			padding: 1rem 0.75rem;
+		}
+
+		.line-numbers {
+			/* ADJUST: Reduced padding for line numbers */
+			padding: 1rem 0.5rem;
+		}
+	}
+
+	/* SMALL MOBILE: Minimal spacing and text */
+	@media (max-width: 480px) {
+		.hero {
+			/* ADJUST: Minimal padding for small phones */
+			padding: 3rem 0 4rem;
+		}
+
+	}
+</style>
+
+<script>
+	// PARTICLES: Create ~40 floating white dots drifting up at speed 0.2
+	function createParticles() {
+		const particlesContainer = document.getElementById('particles');
+		if (!particlesContainer) return;
+
+		// ADJUST: Number of particles
+		const particleCount = 40;
+		
+		for (let i = 0; i < particleCount; i++) {
+			const particle = document.createElement('div');
+			particle.className = 'particle';
+			
+			// ADJUST: Random positioning and animation delay
+			particle.style.left = Math.random() * 100 + '%';
+			particle.style.animationDelay = Math.random() * 20 + 's';
+			particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+			
+			// ADJUST: Slight size variation
+			const size = 1 + Math.random() * 2;
+			particle.style.width = size + 'px';
+			particle.style.height = size + 'px';
+			
+			particlesContainer.appendChild(particle);
+		}
+	}
+
+	// Initialize particles when page loads
+	document.addEventListener('DOMContentLoaded', createParticles);
+	
+	// Also run immediately in case DOMContentLoaded already fired
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', createParticles);
+	} else {
+		createParticles();
+	}
+</script>

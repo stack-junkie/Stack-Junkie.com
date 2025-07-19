@@ -1,0 +1,1159 @@
+/*
+===============================
+STACK-JUNKIE EFFECTS LIBRARY
+===============================
+
+This file contains reusable UI effects and their variations.
+Copy these CSS classes to apply effects to any element.
+
+USAGE GUIDE:
+- Copy the class name and add it to your element
+- Modify the numbers in comments to adjust intensity
+- All effects use consistent timing functions for cohesion
+
+TIMING REFERENCE:
+- 0.1s = Instant response (buttons, clicks)
+- 0.2s = Quick feedback (nav items)  
+- 0.3s = Standard transition (cards, containers)
+- 0.5s+ = Dramatic animations (page loads)
+*/
+
+/* ================================
+   ELEVATION EFFECTS (Hover Lift)
+   ================================ */
+
+/* SUBTLE LIFT: Barely noticeable, professional */
+.effect-lift-subtle {
+	transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+	transform: translateY(0px);
+}
+.effect-lift-subtle:hover {
+	/* MOVEMENT: -1px = subtle lift, increase for more dramatic */
+	transform: translateY(-1px);
+	/* SHADOW: First value = blur, second = darkness */
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* MODERATE LIFT: Noticeable but not distracting */
+.effect-lift-moderate {
+	transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+	transform: translateY(0px);
+}
+.effect-lift-moderate:hover {
+	/* MOVEMENT: -3px = moderate lift */
+	transform: translateY(-3px);
+	/* SHADOW: Larger blur (8px) and more opacity (0.25) */
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* DRAMATIC LIFT: Eye-catching, use sparingly */
+.effect-lift-dramatic {
+	transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+	transform: translateY(0px);
+}
+.effect-lift-dramatic:hover {
+	/* MOVEMENT: -6px = dramatic lift */
+	transform: translateY(-6px);
+	/* SHADOW: Large blur (12px) with high opacity (0.4) */
+	box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* ================================
+   GLOW EFFECTS (Border/Shadow)
+   ================================ */
+
+/* TEAL GLOW: Matches Stack-Junkie brand */
+.effect-glow-teal {
+	transition: all 0.3s ease;
+	border: 1px solid transparent;
+}
+.effect-glow-teal:hover {
+	/* GLOW COLOR: Change RGB values for different colors */
+	/* 20, 184, 166 = Teal brand color */
+	border-color: rgba(20, 184, 166, 0.5);
+	box-shadow: 0 0 20px rgba(20, 184, 166, 0.3);
+}
+
+/* BLUE GLOW: Cool, tech-focused */
+.effect-glow-blue {
+	transition: all 0.3s ease;
+	border: 1px solid transparent;
+}
+.effect-glow-blue:hover {
+	/* BLUE: 59, 130, 246 = Bright blue */
+	border-color: rgba(59, 130, 246, 0.5);
+	box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+/* WHITE GLOW: Clean, minimalist */
+.effect-glow-white {
+	transition: all 0.3s ease;
+	border: 1px solid transparent;
+}
+.effect-glow-white:hover {
+	/* WHITE: 255, 255, 255 with low opacity for subtlety */
+	border-color: rgba(255, 255, 255, 0.2);
+	box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+/* ================================
+   SCALE EFFECTS (Size Changes)
+   ================================ */
+
+/* SCALE UP: Element grows slightly */
+.effect-scale-up {
+	transition: transform 0.2s ease;
+	transform: scale(1);
+}
+.effect-scale-up:hover {
+	/* SCALE: 1.05 = 5% larger, 1.1 = 10% larger */
+	transform: scale(1.05);
+}
+
+/* SCALE DOWN: Element shrinks slightly (press effect) */
+.effect-scale-down {
+	transition: transform 0.1s ease;
+	transform: scale(1);
+}
+.effect-scale-down:active {
+	/* SCALE: 0.95 = 5% smaller, good for button press */
+	transform: scale(0.95);
+}
+
+/* ================================
+   BACKGROUND EFFECTS
+   ================================ */
+
+/* GRADIENT BACKGROUND: Color transition */
+.effect-bg-gradient {
+	background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+	transition: background 0.3s ease;
+}
+.effect-bg-gradient:hover {
+	/* GRADIENT: Adjust colors for different moods */
+	background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+}
+
+/* GRADIENT TEAL: Primary brand gradient */
+.effect-gradient-teal {
+	background: linear-gradient(135deg, var(--primary, #14b8a6) 0%, var(--primary-dark, #0f766e) 100%);
+}
+
+/* GRADIENT NEWSLETTER: Newsletter section gradient */
+.effect-gradient-newsletter {
+	background: linear-gradient(135deg, var(--primary, #0d9488) 0%, var(--primary-dark, #0f766e) 100%);
+	color: white;
+}
+
+/* SOLID COLOR FADE: Simple background change */
+.effect-bg-fade {
+	background-color: transparent;
+	transition: background-color 0.3s ease;
+}
+.effect-bg-fade:hover {
+	/* BACKGROUND: Change RGBA values for different colors */
+	/* Last value (0.1) = opacity, higher = more visible */
+	background-color: rgba(20, 184, 166, 0.1);
+}
+
+/* ================================
+   ROTATION EFFECTS
+   ================================ */
+
+/* ROTATE SLIGHT: Subtle tilt on hover */
+.effect-rotate-slight {
+	transition: transform 0.3s ease;
+	transform: rotate(0deg);
+}
+.effect-rotate-slight:hover {
+	/* ROTATION: 2deg = subtle, 5deg = noticeable, 15deg = dramatic */
+	transform: rotate(2deg);
+}
+
+/* ROTATE ICON: Perfect for icons and small elements */
+.effect-rotate-icon {
+	transition: transform 0.2s ease;
+	transform: rotate(0deg);
+}
+.effect-rotate-icon:hover {
+	/* ROTATION: 15deg good for icons, 45deg for more dramatic */
+	transform: rotate(15deg);
+}
+
+/* ================================
+   BLUR EFFECTS (Backdrop/Focus)
+   ================================ */
+
+/* BACKDROP BLUR: For overlays and navigation */
+.effect-backdrop-blur {
+	/* BLUR: 12px = subtle, 20px = moderate, 40px = heavy */
+	backdrop-filter: blur(12px);
+	/* BACKGROUND: Semi-transparent for glass effect */
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* GLASSMORPHIC: Modern glass effect with blur and transparency */
+.effect-glassmorphic {
+	background: rgba(0, 0, 0, 0.3);
+	backdrop-filter: blur(12px);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* GLASSMORPHIC FOOTER: Footer-specific glass effect */
+.effect-glassmorphic-footer {
+	background: rgba(0, 0, 0, 0.3);
+	backdrop-filter: blur(12px);
+	border-top: 2px solid #14b8a6;
+}
+
+/* GLASSMORPHIC FORM: Form inputs with glass effect */
+.effect-glassmorphic-input {
+	background: rgba(255, 255, 255, 0.1);
+	border: 2px solid rgba(255, 255, 255, 0.2);
+	backdrop-filter: blur(10px);
+}
+.effect-glassmorphic-input:focus {
+	border-color: rgba(255, 255, 255, 0.5);
+	box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+/* FOCUS BLUR: Blur background, focus element */
+.effect-focus-blur {
+	transition: filter 0.3s ease;
+	filter: blur(0px);
+}
+.effect-focus-blur:not(:hover) {
+	/* BLUR: Applied when NOT hovering, creates focus effect */
+	filter: blur(2px);
+}
+
+/* ================================
+   ANIMATION TIMING FUNCTIONS
+   ================================ */
+
+/* 
+TIMING FUNCTION GUIDE:
+- ease: Standard, starts slow, speeds up, slows down
+- ease-in: Starts slow, speeds up
+- ease-out: Starts fast, slows down  
+- ease-in-out: Slow start and end, fast middle
+- cubic-bezier(0.4, 0.0, 0.2, 1): Material Design standard
+- cubic-bezier(0.68, -0.55, 0.265, 1.55): Bounce effect
+*/
+
+.timing-standard {
+	transition-timing-function: ease;
+}
+.timing-material {
+	transition-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+.timing-bounce {
+	transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.timing-smooth {
+	transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ================================
+   COMBINATION EFFECTS
+   ================================ */
+
+/* CARD EFFECT: Lift + Glow + Background */
+.effect-card-premium {
+	transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+	transform: translateY(0px);
+	border: 1px solid #353535;
+	background-color: #1a1a1a;
+}
+.effect-card-premium:hover {
+	/* COMBINATION: Lift + Glow + Background change */
+	transform: translateY(-2px);
+	border-color: rgba(20, 184, 166, 0.5);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(20, 184, 166, 0.2);
+	background-color: #2a2a2a;
+}
+
+/* CARD STANDARD: Subtle hover effect with lift and border glow */
+.effect-card-standard {
+	width: 100%;
+	height: auto;
+	background-color: #121212;
+	border: 1px solid #353535;
+	padding: 1.5rem;
+	overflow: hidden;
+	transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+	transform: translateY(0px);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+	border-radius: 8px;
+}
+.effect-card-standard:hover {
+	transform: translateY(-4px) scale(1.05);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+	border-color: rgba(255, 255, 255, 0.2);
+}
+.effect-card-standard:active {
+	transform: translateY(0px);
+	transition: all 0.1s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* BUTTON EFFECT: Scale + Glow + Color */
+.effect-button-interactive {
+	transition: all 0.2s ease;
+	transform: scale(1);
+	background-color: #444;
+	border: 2px solid transparent;
+}
+.effect-button-interactive:hover {
+	transform: scale(1.05);
+	background-color: #555;
+	border-color: rgba(20, 184, 166, 0.6);
+	box-shadow: 0 4px 15px rgba(20, 184, 166, 0.3);
+}
+.effect-button-interactive:active {
+	transform: scale(0.98);
+}
+
+/* ================================
+   CODE BLOCK HERO EFFECTS
+   ================================ */
+
+/* HERO SECTION: Full-screen hero with perspective */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: transparent;
+  padding: 2rem 0;
+}
+
+.hero-code {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+}
+
+/* CODE BLOCK: 3D tilted code window */
+.code-block {
+  background: #0d1117;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  transform: rotateY(-8deg) rotateX(2deg);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.code-block:hover {
+  transform: rotateY(-4deg) rotateX(1deg);
+}
+
+/* WINDOW HEADER: Mac-style window controls */
+.window-header {
+  background: #161b22;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #30363d;
+}
+
+.window-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.control {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: block;
+}
+
+.control.close { background: #ff5f56; }
+.control.minimize { background: #ffbd2e; }
+.control.maximize { background: #27ca3f; }
+
+.window-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: #8b949e;
+  font-weight: 500;
+}
+
+.window-content {
+  padding: 1.5rem;
+  background: #0d1117;
+}
+
+.window-content pre {
+  margin: 0;
+  color: #79c0ff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+/* RESPONSIVE: Mobile adjustments for code block */
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: auto;
+    padding: 2rem 0;
+  }
+
+  .code-block {
+    transform: none;
+    max-width: 90%;
+  }
+
+  .code-block:hover {
+    transform: none;
+  }
+}
+
+/* ================================
+   IMAGE GLOW EFFECTS
+   ================================ */
+
+/* IMAGE GLOW CONTAINER: Creates backdrop glow effect for images */
+.effect-image-glow {
+  /* CONTAINER: Relative positioning for absolute glow */
+  position: relative;
+}
+
+.effect-image-glow img {
+  /* MAIN IMAGE: Positioned above glow layer */
+  position: relative;
+  z-index: 1;
+}
+
+/* GLOW LAYER: Creates the actual glow effect behind images */
+.effect-glow-backdrop {
+  /* GLOW LAYER: Positioned behind main image */
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  z-index: 0 !important;
+  
+  /* BLUR EFFECT: Creates the glow appearance */
+  /* ADJUST: Change 8px to modify glow intensity */
+  /* 4px = subtle, tight glow */
+  /* 12px = more diffuse, dramatic glow */
+  /* 16px = very soft, wide glow */
+  filter: blur(8px);
+}
+
+/* ================================
+   NEWSLETTER COMPONENT EFFECTS
+   ================================ */
+
+/* NEWSLETTER INLINE: Standard inline newsletter styling */
+.effect-newsletter-inline {
+  background: linear-gradient(135deg, var(--color-surface, #ffffff) 0%, var(--color-gray-50, #f9fafb) 100%);
+  border: 2px solid var(--color-border, #e5e7eb);
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 2rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.effect-newsletter-inline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary, #3b82f6), var(--color-secondary, #8b5cf6));
+}
+
+/* NEWSLETTER COMPACT: Smaller version for sidebars */
+.effect-newsletter-compact {
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+/* NEWSLETTER FEATURED: Premium gradient background */
+.effect-newsletter-featured {
+  background: linear-gradient(135deg, var(--color-primary, #3b82f6) 0%, var(--color-secondary, #8b5cf6) 100%);
+  color: white;
+  border: none;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.effect-newsletter-featured::before {
+  display: none;
+}
+
+/* NEWSLETTER FORM STYLES: Glass effect inputs for featured variant */
+.effect-newsletter-glass-input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  backdrop-filter: blur(10px);
+}
+
+.effect-newsletter-glass-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.effect-newsletter-glass-input:focus {
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+.effect-newsletter-glass-button {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--color-primary, #3b82f6);
+  font-weight: 600;
+}
+
+.effect-newsletter-glass-button:hover {
+  background: white;
+  transform: translateY(-2px);
+}
+
+/* ================================
+   LAYOUT GRID EFFECTS
+   ================================ */
+
+/* RESPONSIVE GRID: Two-column layout that collapses on mobile */
+.effect-layout-grid {
+  /* POSITIONING: Relative for child absolute positioning */
+  position: relative;
+  
+  /* ALIGNMENT: Items start at top, stretch content */
+  align-items: start;
+  align-content: stretch;
+  
+  /* LAYOUT: CSS Grid with two-column layout */
+  display: grid;
+  
+  /* SPACING: Gap between grid areas */
+  /* ADJUST: Change 2rem for tighter/looser spacing */
+  gap: 2rem;
+  
+  /* COLUMNS: Left sidebar (2fr) and main content (5fr) */
+  /* ADJUST: Change ratio for different column widths */
+  grid-template-columns: 2fr 5fr;
+  
+  /* ROWS: Auto-sizing rows */
+  grid-template-rows: auto;
+}
+
+/* TABLET/SMALL DESKTOP: Single column layout */
+@media screen and (max-width: 1380px) {
+  .effect-layout-grid {
+    /* RESPONSIVE: Stack columns vertically */
+    grid-template-columns: 1fr;
+  }
+}
+
+/* MOBILE: Reduced spacing and margins */
+@media screen and (max-width: 640px) {
+  .effect-layout-grid {
+    /* MOBILE MARGINS: Add side padding */
+    margin: 0 1rem;
+    
+    /* MOBILE SPACING: Tighter gap for small screens */
+    /* ADJUST: Change 1rem for different mobile spacing */
+    gap: 1rem;
+  }
+}
+
+/* ================================
+   MODAL EFFECTS
+   ================================ */
+
+/* MODAL BACKDROP: Full-screen overlay with blur */
+.effect-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.effect-modal-backdrop.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* MODAL CONTAINER: Centered modal with entrance animation */
+.effect-modal-container {
+  background: var(--color-surface, white);
+  border-radius: 16px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  position: relative;
+  transform: scale(0.9) translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.effect-modal-backdrop.show .effect-modal-container {
+  transform: scale(1) translateY(0);
+}
+
+/* MODAL CLOSE BUTTON: Subtle close button with hover effects */
+.effect-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-secondary, #6b7280);
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.effect-modal-close:hover {
+  background: var(--color-gray-100, #f3f4f6);
+  color: var(--color-text-primary, #1f2937);
+}
+
+/* ================================
+   NAVBAR EFFECTS
+   ================================ */
+
+/* NAVBAR GLASSMORPHIC: Glass effect navigation bar */
+.effect-navbar-glass {
+  /* GLASS MORPHISM EFFECT - Initial state */
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px);
+  
+  /* BORDER: Teal bottom border */
+  border-bottom: 2px solid #14b8a6;
+  
+  /* ANIMATION: Smooth transitions for all properties */
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* NAVBAR SCROLLED: Solid background after scrolling */
+.effect-navbar-scrolled {
+  background: #000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid #353535;
+}
+
+/* NAVBAR LOGO: Interactive logo with glow and particles */
+.effect-navbar-logo {
+  position: relative;
+  text-decoration: none;
+  z-index: 2;
+  /*transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-left: -1rem;
+}
+
+.effect-navbar-logo:hover {
+  transform: translateY(-2px);
+}
+
+/* NAVBAR LOGO IMAGE: Enhanced logo with glow effects 
+.effect-navbar-logo-image {
+  position: relative;
+  z-index: 3;
+  transition: all 0.3s ease;
+  filter: brightness(1.1) contrast(1.1);
+}*/
+
+.effect-navbar-logo:hover .effect-navbar-logo-image {
+  filter: brightness(1.3) contrast(1.2) drop-shadow(0 0 10px rgba(20, 184, 166, 0.8));
+  transform: scale(1.05);
+}
+
+/* NAVBAR LOGO TEXT: Site name text next to logo */
+.effect-navbar-logo-text {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-family: 'Impact', 'Bebas Neue', 'Oswald', 'Fjalla One', 'Geist', sans-serif;
+  letter-spacing: 0.025em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.effect-navbar-logo:hover .effect-navbar-logo-text {
+  color: #14b8a6;
+  text-shadow: 0 0 8px rgba(20, 184, 166, 0.6);
+}
+
+/* NAVBAR LINK: Gradient underline hover effect */
+.effect-navbar-link {
+  color: white;
+  text-decoration: none;
+  padding: .25rem .5rem;
+  position: relative;
+  font-size: 16px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  /* ANIMATION: Smooth transition for hover states */
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  /* SHAPE: Rounded corners for modern look */
+  border-radius: 4px;
+}
+
+/* TEAL GRADIENT UNDERLINE ON HOVER 
+.effect-navbar-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #5eead4, #14b8a6);
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  transform: translateX(-50%);
+}*/
+.effect-navbar-link:hover::after, 
+.effect-navbar-link:focus-visible::after, 
+.effect-navbar-link.active::after {
+  width: 100%;
+}
+
+.effect-navbar-link:hover, 
+.effect-navbar-link:focus-visible, 
+.effect-navbar-link.active {
+  /* ACCESSIBILITY: Remove default outline */
+  outline: none;
+  
+  /* MOVEMENT: Subtle lift effect to match footer style */
+  transform: translateY(-1px);
+  
+  /* TEXT SHADOW: Enhanced shadow on hover */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* NAVBAR SEARCH: Interactive search input */
+.effect-navbar-search {
+  /* RESET: Remove default input styling */
+  background: none;
+  border: none;
+  outline: none;
+  
+  /* SPACING: Internal padding */
+  padding: .25rem .5rem;
+  
+  /* SIZE: Fixed width for desktop */
+  width: 160px;
+  
+  /* TYPOGRAPHY: White text with 16px font size */
+  color: white;
+  font-size: 16px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  
+  /* ANIMATION: Smooth transition for focus state */
+  /* ADJUST: Change 0.3s for faster/slower search focus animation */
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  
+  /* SHAPE: Rounded corners to match nav links */
+  border-radius: 4px;
+}
+
+.effect-navbar-search::placeholder {
+  /* PLACEHOLDER: White text for visibility */
+  color: white;
+  font-size: 16px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.effect-navbar-search:focus {
+  /* FOCUS STATE: Primary background when active */
+  background-color: var(--primary);
+  
+  /* MOVEMENT: Subtle lift effect to match footer style */
+  transform: translateY(-1px);
+  
+  /* TEXT SHADOW: Enhanced shadow on focus */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  
+  /* SHADOW: Depth effect when focused */
+  /* ADJUST: Increase values for more dramatic focus effect */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ================================
+   HERO TEXT EFFECTS
+   ================================ */
+
+/* HERO TITLE: Large gradient text with glow */
+.effect-hero-title {
+  font-family: sans-serif;
+  font-size: 5.5rem;
+  font-weight: bold;
+  color: #14b8a6; 
+  margin-bottom: 1rem;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: 0 0 20px rgba(62, 187, 206, 0.491);
+  background: linear-gradient(80deg, #1df4da, #00ddc3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.05em;
+}
+
+/* HERO SUBTITLE: Muted text with proper line height */
+.effect-hero-subtitle {
+  color: rgba(255, 255, 255, 0.7); 
+  font-size: 1.125rem;
+  line-height: 1.7;
+  font-weight: 500;
+}
+
+/* ================================
+   FORM EFFECTS
+   ================================ */
+
+/* FORM INPUT: Standard input with focus states */
+.effect-form-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--color-border, #e5e7eb);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.effect-form-input:focus {
+  outline: none;
+  border-color: var(--color-primary, #3b82f6);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* FORM BUTTON: Interactive button with hover effects */
+.effect-form-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 120px;
+}
+
+.effect-form-button:hover {
+  background: var(--primary-light);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.effect-form-button:active {
+  transform: translateY(0);
+}
+
+/* FORM FEEDBACK: Success and error states */
+.effect-form-success {
+  background: var(--color-success-bg, #dcfce7);
+  color: var(--color-success-text, #166534);
+  border: 1px solid var(--color-success-border, #bbf7d0);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.effect-form-error {
+  background: var(--color-error-bg, #fef2f2);
+  color: var(--color-error-text, #dc2626);
+  border: 1px solid var(--color-error-border, #fecaca);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ================================
+   PARTICLE EFFECTS
+   ================================ */
+
+/* PARTICLE CONTAINER: Container for particle effects */
+.effect-particle-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* PARTICLE: Individual particle for burst effects */
+.effect-particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #14b8a6;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* PARTICLE ANIMATION: Burst effect keyframes */
+@keyframes particleBurst {
+  0% {
+    opacity: 1;
+    transform: scale(0) translate(0, 0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) translate(var(--random-x), var(--random-y));
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0) translate(calc(var(--random-x) * 1.5), calc(var(--random-y) * 1.5));
+  }
+}
+
+/* ================================
+   NEWSLETTER TRIGGER BUTTON EFFECTS
+   ================================ */
+
+/* NEWSLETTER TRIGGER BASE: Common trigger button styling */
+.effect-newsletter-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.effect-newsletter-trigger-icon {
+  transition: transform 0.2s ease;
+}
+
+.effect-newsletter-trigger:hover .effect-newsletter-trigger-icon {
+  transform: translateY(-1px);
+}
+
+/* NEWSLETTER TRIGGER BUTTON: Primary button variant */
+.effect-newsletter-button {
+  background: var(--color-primary, #3b82f6);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+}
+
+.effect-newsletter-button:hover {
+  background: var(--color-primary-hover, #2563eb);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+/* NEWSLETTER TRIGGER LINK: Outline button variant */
+.effect-newsletter-link {
+  background: transparent;
+  color: var(--color-primary, #3b82f6);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border: 1px solid var(--color-primary, #3b82f6);
+}
+
+.effect-newsletter-link:hover {
+  background: var(--color-primary, #3b82f6);
+  color: white;
+}
+
+/* NEWSLETTER TRIGGER CTA: Premium gradient button */
+.effect-newsletter-cta {
+  background: linear-gradient(135deg, var(--color-primary, #3b82f6) 0%, var(--color-secondary, #8b5cf6) 100%);
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);
+}
+
+.effect-newsletter-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px 0 rgba(59, 130, 246, 0.5);
+}
+
+/* ================================
+   CODE WINDOW EFFECTS
+   ================================ */
+
+/* CODE WINDOW: Mac-style code window with 3D tilt */
+.effect-code-window {
+  background: #0d1117;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 650px;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.05);	
+  transform: rotateY(-8deg) rotateX(2deg);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 11;
+}
+
+.effect-code-window:hover {
+  transform: rotateY(-4deg) rotateX(1deg);
+}
+
+/* CODE WINDOW HEADER: Mac-style title bar */
+.effect-code-window-header {
+  background: #161b22;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #30363d;
+}
+
+.effect-code-window-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.effect-code-window-control {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: block;
+}
+
+.effect-code-window-control.close { background: #ff5f56; }
+.effect-code-window-control.minimize { background: #ffbd2e; }
+.effect-code-window-control.maximize { background: #27ca3f; }
+
+.effect-code-window-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: #8b949e;
+  font-weight: 500;
+}
+
+/* CODE WINDOW CONTENT: Split layout for line numbers and code */
+.effect-code-window-content {
+  display: flex;
+  background: #0d1117;
+}
+
+.effect-code-window-line-numbers {
+  background: #161b22;
+  padding: 1.5rem 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: #484f58;
+  line-height: 2.8;
+  user-select: none;
+  border-right: 1px solid #30363d;
+  text-align: right;
+  min-width: 3rem;
+}
+
+.effect-code-window-code {
+  padding: 1.5rem 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  flex: 1;
+  overflow-x: auto;
+}
+
+.effect-code-window-line {
+  color: #e6edf3;
+  white-space: normal;
+  margin-bottom: 1rem;
+}
+
+.effect-code-window-line a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.effect-code-comment { color: #8b949e; font-style: italic; }
+.effect-code-string { color: #a5d6ff; }
+
+/* RESPONSIVE: Remove 3D transform on mobile */
+@media (max-width: 1024px) {
+  .effect-code-window {
+    transform: none;
+  }
+
+  .effect-code-window:hover {
+    transform: none;
+  }
+}
+
+/* RESPONSIVE: Smaller newsletter buttons on mobile */
+@media (max-width: 640px) {
+  .effect-newsletter-button,
+  .effect-newsletter-cta {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  .effect-newsletter-cta {
+    font-size: 1rem;
+  }
+}
+
+/* ================================
+   COLOR PALETTE
+   ================================ */
+
+/*
+STACK-JUNKIE COLOR PALETTE:
+
+PRIMARY TEAL: rgb(20, 184, 166) or #14B8A6
+- Use for: Main accents, buttons, highlights
+- RGBA: rgba(20, 184, 166, opacity)
+
+DARK GRAYS:
+- Background: #0b0b0b (navigation)
+- Cards: #121212 
+- Borders: #353535
+- Lighter: #2a2a2a
+
+TRANSPARENCY LEVELS:
+- 0.05 = Barely visible
+- 0.1 = Subtle
+- 0.2 = Noticeable  
+- 0.3 = Moderate
+- 0.5 = Strong
+- 0.8 = Very strong
+*/

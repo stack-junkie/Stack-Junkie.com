@@ -1,89 +1,115 @@
-.layout-grid-left, .layout-grid-right {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 2rem;
+.layout-grid-left,
+.layout-grid-right {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	gap: 2rem;
+	opacity: 1;
+	transform: translateY(0);
 }
 
 @media screen and (max-width: 640px) {
-  .layout-grid-left, .layout-grid-right {
-    gap: 1rem;
-  }
+	.layout-grid-left,
+	.layout-grid-right {
+		gap: 1rem;
+	}
 }
 
 .flex-col-card {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .header-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 1rem;
+	margin-bottom: 1rem;
 }
 
 .header-container * {
-  margin: 0;
+	margin: 0;
 }
 
 .prose {
-  line-height: 1.6;
+	line-height: 1.6;
 }
 
 .post-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 1rem;
-  border: 1px solid #353535;
-  color: #ffffff;
-  text-decoration: none;
-  transition: background-color .15s ease, border .15s ease;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	padding: 1rem;
+	border: 1px solid #353535;
+	color: #ffffff;
+	text-decoration: none;
+	/* ANIMATION SPEED: Fast transition for immediate feedback */
+	/* ADJUST: Change 0.15s to 0.3s for slower, more relaxed feel */
+	transition: all 0.15s cubic-bezier(0.4, 0.0, 0.2, 1);
+
+	/* CORNERS: Rounded for modern card appearance */
+	border-radius: 6px;
 }
 
-.post-container:hover, .post-container:focus-visible {
-  background-color: rgba(140, 92, 245, .125);
-  border: 1px solid var(--primary);
+.post-container:hover,
+.post-container:focus-visible {
+	/* BACKGROUND: Teal brand color with low opacity */
+	/* ADJUST: Change 0.125 to 0.2 for more visible background */
+	background-color: rgba(20, 184, 166, 0.125);
+
+	/* BORDER: Full teal border on hover */
+	border: 1px solid var(--primary);
+
+	/* MOVEMENT: Very subtle upward movement */
+	/* ADJUST: Change -0.5px to values below for different effects:
+	   * 0px = no movement (pure color/shadow effect)
+	   * -1px = subtle lift
+	   * -2px = noticeable lift */
+	transform: translateY(-0.5px);
+
+	/* SHADOW: Teal-tinted shadow matching brand */
+	/* ADJUST: Change 0.15 to 0.3 for more visible shadow */
+	box-shadow: 0 2px 8px rgba(20, 184, 166, 0.15);
 }
 
 .post-container:focus-visible {
-  outline: none;
+	outline: none;
 }
 
-.post-date, .work-experience-duration {
-  color: #c7c7c7;
+.post-date,
+.work-experience-duration {
+	color: #c7c7c7;
 }
 
 .work-experience-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
 }
 
 .work-experience-entry:not(:last-of-type) {
-  border-bottom: 1px solid #353535;
-  padding-bottom: 1rem;
+	border-bottom: 1px solid #353535;
+	padding-bottom: 1rem;
 }
 
 .work-experience-duration {
-  font-size: .925rem;
+	font-size: 1rem;
 }
 
 .work-experience-company {
-  margin-top: .25rem;
-  margin-bottom: .5rem;
+	margin-top: .25rem;
+	margin-bottom: .5rem;
 }
 
 .work-experience-role {
-  margin-bottom: .75rem;
+	margin-bottom: .75rem;
 }
 
 .socials-link {
-  color: white;
-  display: flex;
-  flex-direction: row;
-  gap: .75rem;
-  align-items: center;
+	color: white;
+	display: flex;
+	flex-direction: row;
+	gap: .75rem;
+	align-items: center;
 }
