@@ -12,8 +12,7 @@
 	"homepage": "https://stack-junkie.com",
 	"packageManager": "npm@10.9.2",
 	"engines": {
-		"node": ">=18.0.0",
-		"pnpm": ">=9.0.0"
+		"node": ">=20.0.0"
 	},
 	"scripts": {
 		"dev": "astro dev",
