@@ -143,6 +143,10 @@ const baseUrl = isProjects ? "/projects/" : "/blog/";
     color: inherit;
     border: 2px solid transparent;
     transition: all 0.3s ease;
+    cursor: pointer;
+    pointer-events: auto;
+    position: relative;
+    z-index: 10;
   }
 
   .project-card:hover {
@@ -382,6 +386,9 @@ const baseUrl = isProjects ? "/projects/" : "/blog/";
           delay: 3000,
           disableOnInteraction: false,
         },
+        // Allow clicks through to links
+        allowTouchMove: true,
+        simulateTouch: true,
       });
     };
 
