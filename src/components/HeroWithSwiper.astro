@@ -123,12 +123,17 @@ const baseUrl = isProjects ? "/projects/" : "/blog/";
     transition: all 0.3s ease;
     opacity: 0.7;
     transform: scale(1.050);
-    z-index: 220;
+    z-index: 1;
   }
 
   .swiper-slide-active {
     opacity: 1;
     transform: scale(1);
+    z-index: 2;
+  }
+  
+  .swiper-slide-active .project-card {
+    z-index: 150;
   }
 
   /* Project Card */
@@ -146,7 +151,7 @@ const baseUrl = isProjects ? "/projects/" : "/blog/";
     cursor: pointer;
     pointer-events: auto;
     position: relative;
-    z-index: 10;
+    z-index: 100;
   }
 
   .project-card:hover {
@@ -162,12 +167,14 @@ const baseUrl = isProjects ? "/projects/" : "/blog/";
     justify-content: center;
     border-bottom: 1px solid #333;
     overflow: hidden;
+    pointer-events: none;
   }
 
   .card-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    pointer-events: none;
   }
 
   .image-placeholder {
@@ -182,6 +189,11 @@ const baseUrl = isProjects ? "/projects/" : "/blog/";
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    pointer-events: none;
+  }
+  
+  .card-content * {
+    pointer-events: none;
   }
 
   .project-title {
@@ -226,11 +238,12 @@ const baseUrl = isProjects ? "/projects/" : "/blog/";
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 10;
+    z-index: 200;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    pointer-events: auto;
   }
 
   .swiper-button-next:hover,
@@ -270,7 +283,7 @@ const baseUrl = isProjects ? "/projects/" : "/blog/";
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 10;
+    z-index: 200;
     display: flex;
     gap: 0.375rem; /* 75% of 0.5rem */
     width: auto;
@@ -386,9 +399,13 @@ const baseUrl = isProjects ? "/projects/" : "/blog/";
           delay: 3000,
           disableOnInteraction: false,
         },
-        // Allow clicks through to links
+        // Improved click handling for desktop and mobile
         allowTouchMove: true,
         simulateTouch: true,
+        preventClicks: false,
+        preventClicksPropagation: false,
+        slideToClickedSlide: false,
+        touchStartPreventDefault: false,
       });
     };
 
