@@ -13,7 +13,7 @@
 	"packageManager": "pnpm@10.4.0",
 	"scripts": {
 		"dev": "astro dev",
-		"build": "astro check && astro build",
+		"build": "astro build",
 		"start": "node dist/server/entry.mjs",
 		"preview": "astro preview",
 		"check": "astro check",
@@ -38,6 +38,7 @@
 		"@iconify-json/simple-icons": "^1.2.18",
 		"@iconify/utils": "^2.2.1",
 		"@shikijs/themes": "^1.26.1",
+		"@vercel/analytics": "^1.5.0",
 		"astro-expressive-code": "^0.38.3",
 		"sharp": "^0.33.5",
 		"typescript": "^5.8.3",
