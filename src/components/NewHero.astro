@@ -77,4 +77,25 @@ min-height: auto;
       grid-template-columns: 1fr;
     }
   }
+
+  @media (max-width: 768px) {
+    .new-hero {
+      padding: 0.5rem 1rem; /* Reduce side padding on mobile */
+    }
+    
+    .hero-text {
+      max-width: 100%; /* Allow full width on mobile */
+      padding: 0 0.5rem; /* Add some breathing room */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .new-hero {
+      padding: 0.25rem 0.5rem; /* Even less padding on very small screens */
+    }
+    
+    .hero-text {
+      padding: 0; /* Remove padding on very small screens */
+    }
+  }
 </style>

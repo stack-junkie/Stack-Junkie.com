@@ -825,6 +825,39 @@ TIMING FUNCTION GUIDE:
   font-weight: 500;
 }
 
+/* RESPONSIVE HERO STYLES: Mobile-first approach */
+@media (max-width: 768px) {
+  .effect-hero-title {
+    font-size: 2.5rem; /* Much smaller for mobile */
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+    text-align: center;
+    /* Ensure text wraps properly */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  .effect-hero-subtitle {
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 0 1rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .effect-hero-title {
+    font-size: 2rem; /* Even smaller for very small screens */
+    line-height: 1.1;
+  }
+  
+  .effect-hero-subtitle {
+    font-size: 0.9rem;
+    padding: 0 0.5rem;
+  }
+}
+
 /* ================================
    FORM EFFECTS
    ================================ */
