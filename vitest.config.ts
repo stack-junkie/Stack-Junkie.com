@@ -4,7 +4,7 @@ import { getViteConfig } from "astro/config";
 export default getViteConfig({
 	test: {
 		environment: "happy-dom",
-		setupFiles: ["./src/test/setup.ts"],
+		setupFiles: ["./test/setup.ts"],
 		globals: true,
 		coverage: {
 			reporter: ["text", "json", "html"],
