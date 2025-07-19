@@ -158,7 +158,7 @@ resources/
 assets-temp/
 
 # AI conversation logs (if you save them)
-claude-*.md
+CLAUDE.md
 chatgpt-*.txt
 conversation-*.md
 
